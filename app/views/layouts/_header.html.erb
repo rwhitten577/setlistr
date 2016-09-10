@@ -1,0 +1,8 @@
+<!-- Flash -->
+  <div class="flash-container">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <h5><%= value %></h5>
+      </div>
+    <% end %>
+  </div>
