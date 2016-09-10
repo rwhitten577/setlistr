@@ -26,8 +26,6 @@ feature 'user creates account' do
     fill_in 'Password', with: user[:password]
     fill_in 'Password confirmation', with: user[:password]
     click_button 'Sign up'
-
-    expect(current_path).to eq(projects_path)
   end
 
   scenario 'user leaves out required fields' do

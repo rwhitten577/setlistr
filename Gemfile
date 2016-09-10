@@ -16,7 +16,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
   gem 'valid_attribute'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers'
   gem 'capybara-webkit'
 end
 
