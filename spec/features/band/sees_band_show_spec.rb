@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-feature 'user sees project songs' do
+feature 'user sees band details' do
   let!(:band) { FactoryGirl.create(:band) }
   let!(:another_band) { FactoryGirl.create(:band) }
   let!(:user1) { FactoryGirl.create(:user, bands: [band]) }
   let!(:user2) { FactoryGirl.create(:user, bands: [band]) }
   let!(:user3) { FactoryGirl.create(:user, bands: [band]) }
   let!(:user4) { FactoryGirl.create(:user, bands: [another_band]) }
-  # let!(:setlist1) { FactoryGirl.create(:setlist)}
-  # let!(:setlist2) { FactoryGirl.create(:setlist)}
+  let!(:setlist1) { FactoryGirl.create(:setlist, band: band)}
+  let!(:setlist2) { FactoryGirl.create(:setlist, band: band)}
 
   context 'authenticated user' do
     before do
@@ -28,11 +28,11 @@ feature 'user sees project songs' do
       expect(page).to have_link('Invite Members')
     end
 
-    # scenario 'sees all setlists for the band' do
-    #   expect(page).to have_content(setlist1[:venue])
-    #   expect(page).to have_content(setlist1[:date])
-    #   expect(page).to have_content(setlist2[:venue])
-    #   expect(page).to have_content(setlist2[:date])
-    # end
+    scenario 'sees all setlists for the band' do
+      expect(page).to have_content(setlist1[:venue])
+      expect(page).to have_content(setlist1[:date])
+      expect(page).to have_content(setlist2[:venue])
+      expect(page).to have_content(setlist2[:date])
+    end
   end
 end

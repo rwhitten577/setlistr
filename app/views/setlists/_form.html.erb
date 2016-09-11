@@ -1,0 +1,30 @@
+<h1><%= @action %> Setlist</h1>
+<%= form_for @setlist do |f| %>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.label :venue, 'Venue or Show Name' %>
+      <%= f.text_field :venue %>
+      <%= @venue_error %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.label :date, 'Show Date' %>
+      <%= f.date_select :date, {:order => [:month, :day, :year]} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.label :band, 'Band' %>
+      <%= f.select :band, current_user.bands.collect { |b| [ b.name, b.id ] } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-3">
+      <%= f.submit @submit, class: 'btn btn-secondary' %>
+    </div>
+    <div class="col-sm-6 col-md-3 offset-md-1">
+      <%= link_to "Cancel", :back, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+<% end %>

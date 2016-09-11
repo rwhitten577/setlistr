@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :members
   has_many :bands, through: :members
+  has_many :setlists, through: :bands
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,

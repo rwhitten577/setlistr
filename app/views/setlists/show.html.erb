@@ -1,0 +1,6 @@
+<h1><%= @band.name %></h1>
+<%= link_to "", edit_setlist_path(@setlist), class: "edit-setlist-#{@setlist.id} fa fa-pencil fa-lg" %>
+<%= link_to "", setlist_path(@setlist), method: :delete, class: "delete-setlist-#{@setlist.id} fa fa-trash fa-lg" %>
+<%= link_to "Print", "" %>
+<h4><%= @setlist.venue %></h4>
+<h4><%= @setlist.date %></h4>
