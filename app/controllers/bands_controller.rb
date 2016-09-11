@@ -4,4 +4,9 @@ class BandsController < ApplicationController
   def index
     @bands = current_user.bands
   end
+
+  def show
+    @band = Band.find(params[:id])
+    @members = @band.users
+  end
 end

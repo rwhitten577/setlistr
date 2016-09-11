@@ -1,0 +1,7 @@
+<h1><%= @band.name %></h1>
+<h4>Members</h4>
+<% @members.each do |member| %>
+  <%= member.username %>
+<% end %>
+
+<%= link_to "Invite Members", "#" %>

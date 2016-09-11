@@ -46,7 +46,7 @@
       "/Users/RyanWhitten/Web Development/setlistr/app/controllers/pages_controller.rb": [
         1,
         1,
-        9,
+        10,
         null,
         null
       ],
@@ -56,11 +56,15 @@
         null,
         1,
         1,
+        null,
+        null,
+        1,
+        1,
         1,
         null,
         null
       ]
     },
-    "timestamp": 1473599755
+    "timestamp": 1473600930
   }
 }
