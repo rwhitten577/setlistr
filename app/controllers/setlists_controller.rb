@@ -9,25 +9,26 @@ class SetlistsController < ApplicationController
     @setlist = Setlist.find(params[:id])
     @band = @setlist.band
   end
-  #
-  # def new
-  #   @band = Band.new
-  #   @submit = 'Create Band'
-  #   @action = 'New'
-  # end
-  #
-  # def create
-  #   @band = Band.new(band_params)
-  #   if @band.save
-  #     Member.create(band: @band, user: current_user)
-  #     flash[:notice] = 'Band successfully created!'
-  #     redirect_to @band
-  #   else
-  #     flash[:notice] = 'There were problems saving your band.'
-  #     @name_error = "Name can't be blank."
-  #     render :new
-  #   end
-  # end
+
+  def new
+    @setlist = Setlist.new
+    @submit = 'Create Setlist'
+    @action = 'New'
+  end
+
+  def create
+    @setlist = Setlist.new(setlist_params)
+    @band = Band.find(params[:setlist][:band])
+    @setlist.band = @band
+    if @setlist.save
+      flash[:notice] = 'Setlist successfully created!'
+      redirect_to @setlist
+    else
+      flash[:notice] = 'There were problems saving your setlist.'
+      @venue_error = "Venue or name can't be blank."
+      render :new
+    end
+  end
   #
   # def edit
   #   @band = Band.find(params[:id])
@@ -53,10 +54,10 @@ class SetlistsController < ApplicationController
   #   flash[:notice] = 'Band deleted.'
   #   redirect_to bands_path
   # end
-  #
-  # private
-  #
-  # def band_params
-  #   params.require(:band).permit(:name)
-  # end
+
+  private
+
+  def setlist_params
+    params.require(:setlist).permit(:venue, :date)
+  end
 end

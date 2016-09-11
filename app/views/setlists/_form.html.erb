@@ -1,16 +1,22 @@
-<h1><%= @action %> Band</h1>
-<%= form_for @band do |f| %>
+<h1><%= @action %> Setlist</h1>
+<%= form_for @setlist do |f| %>
   <div class="row">
     <div class="col-sm-12">
-      <%= f.label :name, 'Band Name' %>
-      <%= f.text_field :name %>
-      <%= @name_error %>
+      <%= f.label :venue, 'Venue or Show Name' %>
+      <%= f.text_field :venue %>
+      <%= @venue_error %>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12">
-      <%= f.label :members, 'Members' %>
-      <%= f.text_field :members %>
+      <%= f.label :date, 'Show Date' %>
+      <%= f.date_select :date, {:order => [:month, :day, :year]} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= f.label :band, 'Band' %>
+      <%= f.select :band, current_user.bands.collect { |b| [ b.name, b.id ] } %>
     </div>
   </div>
   <div class="row">
