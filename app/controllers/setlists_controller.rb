@@ -29,25 +29,29 @@ class SetlistsController < ApplicationController
       render :new
     end
   end
-  #
-  # def edit
-  #   @band = Band.find(params[:id])
-  #   @submit = 'Save'
-  #   @action = 'Edit'
-  # end
-  #
-  # def update
-  #   @band = Band.find(params[:id])
-  #   if @band.update_attributes(band_params)
-  #     flash[:notice] = 'Band successfully saved!'
-  #     redirect_to @band
-  #   else
-  #     flash[:notice] = 'There were problems saving your band.'
-  #     @name_error = "Name can't be blank."
-  #     render :edit
-  #   end
-  # end
-  #
+
+  def edit
+    @setlist = Setlist.find(params[:id])
+    @submit = 'Save'
+    @action = 'Edit'
+  end
+
+  def update
+    @setlist = Setlist.find(params[:id])
+    @band = Band.find(params[:setlist][:band])
+    if @setlist.update_attributes(setlist_params)
+      if @setlist.band != @band
+        @setlist.band = @band
+      end
+      flash[:notice] = 'Setlist successfully saved!'
+      redirect_to @setlist
+    else
+      flash[:notice] = 'There were problems saving your setlist.'
+      @venue_error = "Venue or name can't be blank."
+      render :edit
+    end
+  end
+
   # def destroy
   #   band = Band.find(params[:id])
   #   band.destroy

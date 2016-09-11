@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :bands do
-    resources :setlists, only: [:new, :create, :edit, :update]
+    resources :setlists, only: [:new, :create]
   end
 
   resources :setlists

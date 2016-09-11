@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user edits project' do
+feature 'user edits setlist' do
   let!(:user) { FactoryGirl.create(:user) }
   let!(:band) { FactoryGirl.create(:band) }
   let!(:another_band) { FactoryGirl.build(:band) }
