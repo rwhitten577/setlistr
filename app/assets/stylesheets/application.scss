@@ -1,2 +1,55 @@
-// @import "*";
+@import "bootstrap";
 
+$blue: #006cff;
+$dark-gray: #444444;
+$white: #FFFFFF;
+
+.btn {
+  border-radius: 20px;
+}
+
+.btn-primary {
+  background-color: $blue;
+  border: 2px solid $white;
+  color: $white;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+  background-color: $white;
+  border-color: $white;
+  color: $dark-gray;
+}
+
+.copyright {
+  background-color: $blue;
+  color: $white;
+  font-size: 14px;
+  text-align: center;
+}
+.info {
+  color: $white;
+  margin-bottom: 40px;
+  margin-top: 50px;
+
+  h5 {
+    margin-bottom: 20px;
+  }
+}
+
+.home-session {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.logo-splash {
+  color: $white;
+  font-family: 'Pacifico', cursive;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.splash-background {
+  background-color: $blue;
+  height: 95vh;
+}
