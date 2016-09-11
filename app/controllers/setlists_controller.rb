@@ -5,10 +5,10 @@ class SetlistsController < ApplicationController
     @setlists = current_user.setlists
   end
 
-  # def show
-  #   @band = Band.find(params[:id])
-  #   @members = @band.users
-  # end
+  def show
+    @setlist = Setlist.find(params[:id])
+    @band = @setlist.band
+  end
   #
   # def new
   #   @band = Band.new
