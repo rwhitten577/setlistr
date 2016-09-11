@@ -29,6 +29,24 @@ class BandsController < ApplicationController
     end
   end
 
+  def edit
+    @band = Band.find(params[:id])
+    @submit = 'Save'
+    @action = 'Edit'
+  end
+
+  def update
+    @band = Band.find(params[:id])
+    if @band.update_attributes(band_params)
+      flash[:notice] = 'Band successfully saved!'
+      redirect_to @band
+    else
+      flash[:notice] = 'There were problems saving your band.'
+      @name_error = "Name can't be blank."
+      render :edit
+    end
+  end
+
   private
 
   def band_params

@@ -18,7 +18,7 @@ feature 'user creates band' do
       expect(page).to have_selector('form')
 
       expect(page).to have_content('Band Name')
-      expect(page).to have_content('Invite Members')
+      expect(page).to have_content('Members')
     end
 
     scenario 'inputs valid name' do
