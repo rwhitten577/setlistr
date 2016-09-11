@@ -1,6 +1,33 @@
-<% if user_signed_in? %>
-  <%= link_to "Home", root_path, class: "mobile-hide" %>
-<% else %>
-  <%= link_to "Sign Up", new_user_registration_path, class: "mobile-hide" %>
-  <%= link_to "Sign In", new_user_session_path, class: "mobile-hide" %>
-<% end %>
+    <div class="splash-background container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 offset-md-3">
+          <h1 class="logo-splash">Setlistr</h1>
+        </div>
+      </div>
+      <div class="row info">
+        <div class="col-xs-10 offset-xs-1 col-md-4 offset-md-4">
+          <h5>Save time creating setlists.</h5>
+          <p>
+            Add songs, change the order, and add
+            custom notes for each player. Print a custom copy for everyone in one click.
+          </p>
+        </div>
+      </div>
+      <% unless user_signed_in? %>
+        <div class="row">
+          <div class="col-xs-8 offset-xs-2 col-md-2 offset-md-5">
+            <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary home-session" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-8 offset-xs-2 col-md-2 offset-md-5">
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary home-session" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <footer class="footer copyright">
+      <div class="container">
+        <p>Copyright &copy; 2016 by Setlistr. All rights reserved.</p>
+      </div>
+    </footer>
