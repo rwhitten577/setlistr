@@ -1,5 +1,6 @@
 <h1><%= @band.name %></h1>
 <%= link_to "", edit_band_path(@band), class: "edit-band-#{@band.id} fa fa-pencil fa-lg" %>
+        <%= link_to "", band_path(@band), method: :delete, class: "delete-band-#{@band.id} fa fa-trash fa-lg" %>
 <h4>Members</h4>
 <% @members.each do |member| %>
   <%= member.username %>

@@ -47,6 +47,13 @@ class BandsController < ApplicationController
     end
   end
 
+  def destroy
+    band = Band.find(params[:id])
+    band.destroy
+    flash[:notice] = 'Band deleted.'
+    redirect_to bands_path
+  end
+
   private
 
   def band_params
