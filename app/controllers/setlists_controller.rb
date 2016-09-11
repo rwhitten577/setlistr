@@ -52,12 +52,12 @@ class SetlistsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   band = Band.find(params[:id])
-  #   band.destroy
-  #   flash[:notice] = 'Band deleted.'
-  #   redirect_to bands_path
-  # end
+  def destroy
+    setlist = Setlist.find(params[:id])
+    setlist.destroy
+    flash[:notice] = 'Setlist deleted.'
+    redirect_to setlists_path
+  end
 
   private
 
