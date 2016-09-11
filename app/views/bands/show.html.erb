@@ -1,9 +1,16 @@
 <h1><%= @band.name %></h1>
 <%= link_to "", edit_band_path(@band), class: "edit-band-#{@band.id} fa fa-pencil fa-lg" %>
-        <%= link_to "", band_path(@band), method: :delete, class: "delete-band-#{@band.id} fa fa-trash fa-lg" %>
+<%= link_to "", band_path(@band), method: :delete, class: "delete-band-#{@band.id} fa fa-trash fa-lg" %>
 <h4>Members</h4>
 <% @members.each do |member| %>
   <%= member.username %>
 <% end %>
 
 <%= link_to "Invite Members", "#" %>
+
+<h3>Setlists</h3>
+<%= link_to "Create New Setlist", new_band_setlist_path(@band) %>
+<% @setlists.each do |setlist| %>
+  <%= link_to setlist.venue, setlist_path(setlist) %>
+  <%= link_to setlist.date, setlist_path(setlist) %>
+<% end %>

@@ -6,5 +6,9 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :bands
+  resources :bands do
+    resources :setlists, only: [:new, :create, :edit, :update]
+  end
+
+  resources :setlists
 end

@@ -8,6 +8,7 @@ class BandsController < ApplicationController
   def show
     @band = Band.find(params[:id])
     @members = @band.users
+    @setlists = @band.setlists
   end
 
   def new

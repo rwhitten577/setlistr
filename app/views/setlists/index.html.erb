@@ -1,0 +1,11 @@
+<h1>Your Setlists</h1>
+<%= link_to "Create New Setlist", new_setlist_path %>
+<% if @setlists.nil? %>
+  <%= "You have no setlists" %>
+<% else %>
+  <% @setlists.each do |setlist| %>
+    <%= link_to setlist.band.name, band_path(setlist.band) %>
+    <%= link_to setlist.venue, setlist_path(setlist) %>
+    <%= link_to setlist.date, setlist_path(setlist) %>
+  <% end %>
+<% end %>
