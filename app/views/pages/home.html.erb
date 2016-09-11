@@ -13,21 +13,21 @@
           </p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-8 offset-xs-2 col-md-2 offset-md-5">
-          <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary home-session" %>
+      <% unless user_signed_in? %>
+        <div class="row">
+          <div class="col-xs-8 offset-xs-2 col-md-2 offset-md-5">
+            <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary home-session" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-8 offset-xs-2 col-md-2 offset-md-5">
+            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary home-session" %>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-8 offset-xs-2 col-md-2 offset-md-5">
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary home-session" %>
-        </div>
-      </div>
-    </div>
+    <% end %>
     <footer class="footer copyright">
       <div class="container">
         <p>Copyright &copy; 2016 by Setlistr. All rights reserved.</p>
       </div>
     </footer>
-  </body>
-</html>
