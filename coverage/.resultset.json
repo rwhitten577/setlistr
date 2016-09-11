@@ -8,6 +8,9 @@
         1,
         null,
         1,
+        1,
+        null,
+        1,
         null,
         null,
         null
@@ -16,14 +19,21 @@
         1,
         null
       ],
-      "/Users/RyanWhitten/Web Development/setlistr/app/controllers/pages_controller.rb": [
+      "/Users/RyanWhitten/Web Development/setlistr/app/models/band.rb": [
         1,
         1,
-        8,
-        8,
         null,
-        8,
+        1,
+        1,
+        null
+      ],
+      "/Users/RyanWhitten/Web Development/setlistr/app/models/member.rb": [
+        1,
+        1,
+        1,
         null,
+        1,
+        1,
         null
       ],
       "/Users/RyanWhitten/Web Development/setlistr/app/controllers/application_controller.rb": [
@@ -32,8 +42,25 @@
         null,
         1,
         null
+      ],
+      "/Users/RyanWhitten/Web Development/setlistr/app/controllers/pages_controller.rb": [
+        1,
+        1,
+        9,
+        null,
+        null
+      ],
+      "/Users/RyanWhitten/Web Development/setlistr/app/controllers/bands_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1473596110
+    "timestamp": 1473599755
   }
 }

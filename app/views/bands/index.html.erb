@@ -1,0 +1,9 @@
+<h1>Your Bands</h1>
+<%= link_to "Add New Band", new_band_path %>
+<% if @bands.nil? %>
+  <%= "You have no bands" %>
+<% else %>
+  <% @bands.each do |band| %>
+    <%= link_to band.name, band_path(band) %>
+  <% end %>
+<% end %>
