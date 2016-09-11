@@ -17,6 +17,7 @@
     <div class="col-sm-12">
       <%= f.label :band, 'Band' %>
       <%= f.select :band, current_user.bands.collect { |b| [ b.name, b.id ] } %>
+      <%= @band_error %>
     </div>
   </div>
   <div class="row">

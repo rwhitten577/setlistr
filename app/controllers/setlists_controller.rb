@@ -18,11 +18,22 @@ class SetlistsController < ApplicationController
 
   def create
     @setlist = Setlist.new(setlist_params)
-    @band = Band.find(params[:setlist][:band])
-    @setlist.band = @band
-    if @setlist.save
+    @band = params[:setlist][:band]
+    if !@band.nil? && setlist_params[:venue] != ''
+      @band = Band.find(params[:setlist][:band])
+      @setlist.band = @band
+      @setlist.save
       flash[:notice] = 'Setlist successfully created!'
       redirect_to @setlist
+    elsif @band.nil? && setlist_params[:venue] != ''
+      flash[:notice] = 'There were problems saving your setlist.'
+      @band_error = "You must select a band or create a new one."
+      render :new
+    elsif @band.nil? && setlist_params[:venue] == ''
+      flash[:notice] = 'There were problems saving your setlist.'
+      @venue_error = "Venue or name can't be blank."
+      @band_error = "You must select a band or create a new one."
+      render :new
     else
       flash[:notice] = 'There were problems saving your setlist.'
       @venue_error = "Venue or name can't be blank."

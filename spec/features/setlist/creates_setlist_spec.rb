@@ -1,13 +1,31 @@
 require 'rails_helper'
 
 feature 'user creates setlist' do
-  let!(:band) { FactoryGirl.create(:band) }
-  let!(:band2) { FactoryGirl.create(:band) }
-  let!(:user) { FactoryGirl.create(:user, bands: [band, band2]) }
-  let!(:setlist) { FactoryGirl.build(:setlist) }
-  # let!(:song) { FactoryGirl.create(:song, band: band) }
+  context 'band does not exist' do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:setlist) { FactoryGirl.build(:setlist) }
 
-  context 'creates from setlist index' do
+    scenario 'does not complete required fields' do
+      sign_in(user)
+      visit new_setlist_path
+
+      fill_in 'setlist_venue', with: ''
+
+      click_button 'Create Setlist'
+
+      expect(page).not_to have_content('Setlist successfully created!')
+      expect(page).to have_content("Venue or name can't be blank")
+      expect(page).to have_content("You must select a band or create a new one")
+      expect(page).to have_content('There were problems saving your setlist')
+    end
+  end
+
+  context 'band already exists, creates from setlist index' do
+    let!(:band) { FactoryGirl.create(:band) }
+    let!(:band2) { FactoryGirl.create(:band) }
+    let!(:user) { FactoryGirl.create(:user, bands: [band, band2]) }
+    let!(:setlist) { FactoryGirl.build(:setlist) }
+    # let!(:song) { FactoryGirl.create(:song, band: band) }
     before do
       sign_in(user)
     end
@@ -57,6 +75,11 @@ feature 'user creates setlist' do
   end
 
   context 'creates from band show' do
+    let!(:band) { FactoryGirl.create(:band) }
+    let!(:band2) { FactoryGirl.create(:band) }
+    let!(:user) { FactoryGirl.create(:user, bands: [band, band2]) }
+    let!(:setlist) { FactoryGirl.build(:setlist) }
+    
     before do
       sign_in(user)
     end
