@@ -24,8 +24,9 @@ feature 'user creates setlist' do
     let!(:band) { FactoryGirl.create(:band) }
     let!(:band2) { FactoryGirl.create(:band) }
     let!(:user) { FactoryGirl.create(:user, bands: [band, band2]) }
+    let!(:song) { FactoryGirl.create(:song, band: band) }
     let!(:setlist) { FactoryGirl.build(:setlist) }
-    # let!(:song) { FactoryGirl.create(:song, band: band) }
+
     before do
       sign_in(user)
     end
@@ -41,6 +42,7 @@ feature 'user creates setlist' do
       expect(page).to have_content('Venue or Show Name')
       expect(page).to have_content('Show Date')
       expect(page).to have_content('Band')
+      expect(page).to have_content('Songs')
     end
 
     scenario 'inputs valid venue and date' do
@@ -52,6 +54,8 @@ feature 'user creates setlist' do
       select setlist.date.strftime("%B"), from: 'setlist[date(2i)]'
       select setlist.date.year, from: 'setlist[date(1i)]'
       select band2.name, from: 'setlist[band]'
+
+      fill_in ''
 
       click_button 'Create Setlist'
 
@@ -79,7 +83,7 @@ feature 'user creates setlist' do
     let!(:band2) { FactoryGirl.create(:band) }
     let!(:user) { FactoryGirl.create(:user, bands: [band, band2]) }
     let!(:setlist) { FactoryGirl.build(:setlist) }
-    
+
     before do
       sign_in(user)
     end
